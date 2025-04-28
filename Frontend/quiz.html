@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skin Type Quiz & Routine</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #444;
+    }
+
+    #question {
+      font-size: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      font-size: 16px;
+      color: #fff;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #routine-display {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .routine-section {
+      background-color: #f0f4f1;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .routine-section strong {
+      color: #4CAF50;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Quiz Section -->
+    <div id="quiz-section">
+      <h2>Skin Type Quiz</h2>
+      <p id="question"></p>
+      <div id="options"></div>
+    </div>
+
+    <!-- Routine Section -->
+    <div id="routine-section" class="hidden routine-section">
+      <h2>Your Skincare Routine</h2>
+      <div id="routine-display"></div>
+    </div>
+  </div>
+
+  <script>
+    const quizData = {
+      q1: {
+        question: "How does your skin usually feel during the day?",
+        options: {
+          a: "Shiny or greasy (especially in T-zone)",
+          b: "Dry, tight, or flaky",
+          c: "Oily in some areas, dry in others",
+          d: "Easily irritated or red"
+        },
+        next: "end"
+      }
+    };
+
+    let currentKey = "q1";
+    let userSkinType = "";
+
+    function showQuestion(key) {
+      const q = quizData[key];
+      document.getElementById("question").innerText = q.question;
+
+      const optionsHTML = Object.entries(q.options).map(([optKey, text]) => {
+        return `<button onclick="selectAnswer('${optKey}')">${text}</button>`;
+      }).join("<br><br>");
+
+      document.getElementById("options").innerHTML = optionsHTML;
+    }
+
+    function selectAnswer(option) {
+      if (option === 'a') userSkinType = "oily";
+      else if (option === 'b') userSkinType = "dry";
+      else if (option === 'c') userSkinType = "combo";
+      else if (option === 'd') userSkinType = "sensitive";
+
+      const nextKey = quizData[currentKey].next;
+
+      if (nextKey === "end" && userSkinType) {
+        showRoutine(userSkinType); // Show routine without redirect
+      }
+    }
+
+    function showRoutine(skinType) {
+      document.getElementById("quiz-section").classList.add("hidden");
+      document.getElementById("routine-section").classList.remove("hidden");
+
+      let routine = "";
+
+      if (skinType === 'oily') {
+        routine = `
+          <strong>Oily Skin Routine:</strong><br>
+          - Gel-based cleanser<br>
+          - Alcohol-free toner<br>
+          - Oil-free moisturizer<br>
+          - Clay mask 1-2x/week<br>
+          - SPF 50 matte sunscreen
+        `;
+      } else if (skinType === 'dry') {
+        routine = `
+          <strong>Dry Skin Routine:</strong><br>
+          - Creamy hydrating cleanser<br>
+          - Hydrating toner or mist<br>
+          - Rich moisturizer (with hyaluronic acid)<br>
+          - Nourishing serum<br>
+          - Gentle exfoliation 1x/week
+        `;
+      } else if (skinType === 'combo') {
+        routine = `
+          <strong>Combination Skin Routine:</strong><br>
+          - Balancing cleanser<br>
+          - Lightweight gel moisturizer<br>
+          - Targeted treatments (e.g. for T-zone)<br>
+          - Clay mask for oily areas weekly<br>
+          - Sunscreen (non-comedogenic)
+        `;
+      } else if (skinType === 'sensitive') {
+        routine = `
+          <strong>Sensitive Skin Routine:</strong><br>
+          - Gentle, fragrance-free cleanser<br>
+          - Calming serum (with niacinamide or Centella)<br>
+          - Lightweight soothing moisturizer<br>
+          - Avoid harsh exfoliants<br>
+          - Mineral-based sunscreen
+        `;
+      }
+
+      document.getElementById("routine-display").innerHTML = routine;
+    }
+
+    window.onload = function() {
+      showQuestion(currentKey);
+    };
+  </script>
+
+</body>
+</html>

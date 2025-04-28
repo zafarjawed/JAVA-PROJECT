@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My GlowUp Routine 🌷</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to right, #f8cdda, #1d2b64);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 60px 20px 30px;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 15px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-list {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-link {
+      margin: 0 15px;
+      padding: 10px 20px;
+      background-color: #f48fb1;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      background-color: #ec407a;
+      transform: scale(1.1);
+    }
+
+    .routine-box {
+      background-color: rgba(255, 255, 255, 0.92);
+      padding: 40px;
+      border-radius: 30px;
+      max-width: 700px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      margin-top: 120px;
+      animation: fadeIn 1s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .routine-box h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      color: #b0006d;
+      margin-bottom: 20px;
+    }
+
+    .routine-list {
+      text-align: left;
+      margin-top: 30px;
+      font-size: 1.1rem;
+      line-height: 2.2;
+      color: #5f4b4b;
+    }
+
+    .routine-item {
+      background-color: #ffe5ec;
+      padding: 15px 20px;
+      border-radius: 15px;
+      margin-bottom: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    .routine-item:hover {
+      transform: scale(1.02);
+      background-color: #fff0f5;
+    }
+
+    .btn {
+      margin-top: 30px;
+      display: inline-block;
+      padding: 12px 28px;
+      background-color: #f48fb1;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+      background-color: #ec407a;
+      transform: scale(1.05);
+    }
+
+    .glow-tips {
+      margin-top: 40px;
+      max-width: 700px;
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 30px;
+      border-radius: 25px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1.3s ease;
+    }
+
+    .glow-tips h3 {
+      font-family: 'Playfair Display', serif;
+      color: #7a1e4d;
+      margin-bottom: 15px;
+    }
+
+    .glow-tips ul {
+      list-style-type: '🌟 ';
+      padding-left: 20px;
+      font-size: 1rem;
+      color: #5e4b4b;
+    }
+
+    footer {
+      margin-top: 50px;
+      padding: 20px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.8);
+      width: 100%;
+      font-size: 0.95em;
+      border-top: 1px dashed #e06b8f;
+    }
+
+    @media (max-width: 600px) {
+      .routine-box h2 {
+        font-size: 2rem;
+      }
+
+      .btn {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+      }
+
+      .routine-list {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <ul class="nav-list">
+        <li><a href="index.html" class="nav-link">🏠 Home</a></li>
+        <li><a href="about.html" class="nav-link">💖 About</a></li>
+        <li><a href="contact.html" class="nav-link">📞 Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="routine-box">
+    <h2>Your Personalized Glow Routine 💖</h2>
+    <div id="routine" class="routine-list">
+      <!-- JS will insert items here -->
+    </div>
+    <a href="quiz.html" class="btn">🔁 Retake Quiz</a>
+  </div>
+
+  <div class="glow-tips">
+    <h3>Daily Glow-Up Tips 🌼</h3>
+    <ul>
+      <li>Stay hydrated — drink 2L of water daily 💧</li>
+      <li>Sleep 7–8 hours for skin repair 😴</li>
+      <li>Always remove makeup before bed 🧽</li>
+      <li>Use sunscreen even when indoors ☀️</li>
+      <li>Smile more — your glow starts within ✨</li>
+    </ul>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 My GlowUp Routine by Poojashree. All rights reserved.</p>
+    <p>Made with 💅 love & skincare obsession</p>
+  </footer>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const skin = params.get("skinType");
+    const concern = params.get("concern");
+
+    const data = {
+      "Oily_Acne": [
+        "Cleanser: Tea Tree Foaming Wash",
+        "Serum: 10% Niacinamide + Zinc",
+        "Moisturizer: Oil-Free Matte Gel",
+        "Sunscreen: SPF 50 Anti-shine",
+        "Extra: Clay Mask (2x/week)"
+      ],
+      "Dry_Dullness": [
+        "Cleanser: Hydrating Milk Cleanser",
+        "Serum: Vitamin C + Hyaluronic Acid",
+        "Moisturizer: Deep Nourish Cream",
+        "Sunscreen: Dewy Finish SPF 30",
+        "Extra: Honey Sheet Masks (3x/week)"
+      ],
+      "Combination_Dark Spots": [
+        "Cleanser: Balancing Foam",
+        "Serum: Alpha Arbutin + Licorice Root",
+        "Moisturizer: Light Cream with Niacinamide",
+        "Sunscreen: Brightening SPF 40",
+        "Extra: Exfoliate gently 2x/week"
+      ],
+      "Sensitive_Redness": [
+        "Cleanser: Non-stripping Jelly Cleanser",
+        "Serum: Centella + Ceramide",
+        "Moisturizer: Barrier Repair Balm",
+        "Sunscreen: Mineral SPF 50",
+        "Extra: Avoid fragrance & alcohol products"
+      ],
+      "Normal_Wrinkles": [
+        "Cleanser: Anti-aging Lather Cleanser",
+        "Serum: Retinol (night), Peptides (day)",
+        "Moisturizer: Collagen Rebuilding Cream",
+        "Sunscreen: Broad Spectrum SPF 50",
+        "Extra: Gua Sha massage + eye cream"
+      ]
+    };
+
+    const key = `${skin}_${concern}`;
+    const resultDiv = document.getElementById("routine");
+
+    if (skin && concern && data[key]) {
+      resultDiv.innerHTML = data[key]
+        .map(item => `<div class="routine-item">✨ ${item}</div>`)
+        .join('');
+    } else if (!skin || !concern) {
+      resultDiv.innerHTML = `<p>📝 Please take the quiz first to get your glow-up routine!</p>`;
+    } else {
+      resultDiv.innerHTML = `<p>Oops! No match found for this combo 💔 Try another!</p>`;
+    }
+  </script>
+
+</body>
+</html>

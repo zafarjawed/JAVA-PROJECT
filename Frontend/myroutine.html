@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Skincare Routine</title>
+  <style>
+    /* Overall Page Style */
+    body {
+      background: linear-gradient(to bottom, #f5c6e7, #f9d9d7); /* Soft gradient of blush pink to creamy peach */
+      font-family: 'Lora', serif; /* Elegant serif font for a chic, artistic touch */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow-x: hidden;
+      color: #3c3c3c;
+      background-attachment: fixed;
+    }
+
+    /* Routine Box Container */
+    .routine-box {
+      background: rgba(255, 255, 255, 0.85); /* Subtle white background with transparency */
+      padding: 2.5rem 3rem;
+      border-radius: 30px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15); /* Soft shadows for depth */
+      width: 90%;
+      max-width: 650px;
+      text-align: center;
+      backdrop-filter: blur(15px); /* Soft background blur effect */
+      border: 2px solid rgba(255, 182, 193, 0.6); /* Pale pink border */
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    /* Elegant Fade-In Animation */
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Routine Heading */
+    .routine-header {
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #6d4c41;
+      margin-bottom: 2rem;
+      font-family: 'Merriweather', serif;
+      line-height: 1.5;
+      text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1); /* Soft text shadow */
+    }
+
+    /* Routine Text */
+    .routine-text {
+      font-size: 1.4rem;
+      color: #6d4c41;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    /* Button to Go Back */
+    .back-button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+      text-transform: capitalize;
+      border: none;
+      border-radius: 25px;
+      background-color: #fbd6d3; /* Light pink */
+      color: #9c5b5b; /* Warm muted brown for text */
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      text-decoration: none;
+    }
+
+    .back-button:hover {
+      background-color: #f8a5a5; /* Soft blush pink on hover */
+      color: white;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* More pronounced shadow for hover */
+      transform: translateY(-3px); /* Button lift effect */
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="routine-box">
+    <div class="routine-header">Your Skincare Routine</div>
+
+    <div id="routine-text" class="routine-text"></div>
+
+    <a href="index.html" class="back-button">Go Back to Quiz</a>
+  </div>
+
+  <script>
+    window.onload = function() {
+      const skinType = localStorage.getItem("skinType");
+      const routineText = document.getElementById("routine-text");
+
+      let routine = '';
+
+      if (skinType === 'oily') {
+        routine = `
+          <strong>Oily Skin Routine:</strong><br>
+          - Gel-based cleanser<br>
+          - Alcohol-free toner<br>
+          - Oil-free moisturizer<br>
+          - Clay mask 1-2x/week<br>
+          - SPF 50 matte sunscreen
+        `;
+      } else if (skinType === 'dry') {
+        routine = `
+          <strong>Dry Skin Routine:</strong><br>
+          - Creamy hydrating cleanser<br>
+          - Hydrating toner or mist<br>
+          - Rich moisturizer (with hyaluronic acid)<br>
+          - Nourishing serum<br>
+          - Gentle exfoliation 1x/week
+        `;
+      } else if (skinType === 'combo') {
+        routine = `
+          <strong>Combination Skin Routine:</strong><br>
+          - Balancing cleanser<br>
+          - Lightweight gel moisturizer<br>
+          - Targeted treatments (e.g. for T-zone)<br>
+          - Clay mask for oily areas weekly<br>
+          - Sunscreen (non-comedogenic)
+        `;
+      } else if (skinType === 'sensitive') {
+        routine = `
+          <strong>Sensitive Skin Routine:</strong><br>
+          - Gentle, fragrance-free cleanser<br>
+          - Calming serum (with niacinamide or Centella)<br>
+          - Lightweight soothing moisturizer<br>
+          - Avoid harsh exfoliants<br>
+          - Mineral-based sunscreen
+        `;
+      }
+
+      routineText.innerHTML = routine ? routine : 'Please take the quiz to get your skincare routine.';
+    };
+  </script>
+
+</body>
+</html>
